@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="v7_validation_to_separate_method.cs" />
     <Compile Include="v6_move_setup_and_teardown_out.cs" />
     <Compile Include="v5_combining_waits_and_selects.cs" />
     <Compile Include="v3_waits_to_separate_method.cs" />
