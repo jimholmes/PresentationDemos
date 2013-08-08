@@ -11,51 +11,43 @@ using OpenQA.Selenium.Support.UI;
 namespace CAST2013
 {
     [TestFixture]
-    public class v3_waits_to_separate_method
+    public class v5_combining_waits_and_selects
     { 
+        IWebDriver browser;
         WebDriverWait wait;
+        IWebElement selectionList;
 
         [Test]
-        public void a_bit_easier_to_read()
+        public void waits_and_selects_combined()
         {
             var profile = new FirefoxProfile();
             var exe = new FirefoxBinary(@"D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-            IWebDriver browser = new FirefoxDriver(exe, profile);
+            browser = new FirefoxDriver(exe, profile);
 
             wait = new WebDriverWait(browser,TimeSpan.FromSeconds(10));
 
-            browser.Navigate().GoToUrl("http://localhost/AJAXDemos/CascadingDropDown/CascadingDropDown.aspx");
             //browser.Navigate().GoToUrl("http://www.asp.net/ajaxLibrary/AjaxControlToolkitSampleSite/CascadingDropDown/CascadingDropDown.aspx");
+            browser.Navigate().GoToUrl("http://localhost/AJAXDemos/CascadingDropDown/CascadingDropDown.aspx");
 
-            wait_on_menu_item(1, "Acura");
-
-            var selectionList = 
-                browser.FindElement(
-                    By.Id("ctl00_SampleContent_DropDownList1"));
-            var optionsList = new SelectElement(selectionList);
-            optionsList.SelectByText("Acura");
-
-            wait_on_menu_item(2, "Integra");
-
-            selectionList = 
-                 browser.FindElement(
-                    By.Id("ctl00_SampleContent_DropDownList2"));
-            optionsList = new SelectElement(selectionList);
-            optionsList.SelectByText("Integra");
-
-            wait_on_menu_item(3, "Sea Green");
-
-            selectionList = 
-                browser.FindElement(
-                    By.Id("ctl00_SampleContent_DropDownList3"));
-            optionsList = new SelectElement(selectionList);
-            optionsList.SelectByText("Sea Green");
-
+            select_menu_item(1, "Acura");
+            select_menu_item(2, "Integra");
+            select_menu_item(3, "Sea Green");
+            
             wait.Until(
                 ExpectedConditions.ElementExists(
                     By.XPath("//span[@id='ctl00_SampleContent_Label1' and text()='You have chosen a Sea Green Acura Integra. Nice car!']")));
 
             browser.Quit();
+        }
+
+        private void select_menu_item(int listNum, string item)
+        {
+            wait_on_menu_item(listNum, item);
+            selectionList =
+                            browser.FindElement(
+                                By.Id("ctl00_SampleContent_DropDownList" + listNum));
+            var optionsList = new SelectElement(selectionList);
+            optionsList.SelectByText(item);
         }
 
         private void wait_on_menu_item(int listNum, string text)

@@ -21,8 +21,8 @@ namespace CAST2013
             IWebDriver browser = new FirefoxDriver(exe, profile);
 
             WebDriverWait wait = new WebDriverWait(browser,TimeSpan.FromSeconds(10));
-
-            browser.Navigate().GoToUrl("http://www.asp.net/ajaxLibrary/AjaxControlToolkitSampleSite/CascadingDropDown/CascadingDropDown.aspx");
+            browser.Navigate().GoToUrl("http://localhost/AJAXDemos/CascadingDropDown/CascadingDropDown.aspx");
+            //browser.Navigate().GoToUrl("http://www.asp.net/ajaxLibrary/AjaxControlToolkitSampleSite/CascadingDropDown/CascadingDropDown.aspx");
 
             wait.Until(
                 ExpectedConditions.ElementExists(

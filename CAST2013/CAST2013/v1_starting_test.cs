@@ -22,7 +22,8 @@ namespace CAST2013
 
             WebDriverWait wait = new WebDriverWait(browser,TimeSpan.FromSeconds(10));
 
-            browser.Navigate().GoToUrl("http://www.asp.net/ajaxLibrary/AjaxControlToolkitSampleSite/CascadingDropDown/CascadingDropDown.aspx");
+            browser.Navigate().GoToUrl("http://localhost/AJAXDemos/CascadingDropDown/CascadingDropDown.aspx");
+            //browser.Navigate().GoToUrl("http://www.asp.net/ajaxLibrary/AjaxControlToolkitSampleSite/CascadingDropDown/CascadingDropDown.aspx");
 
             wait.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList1')/option[text()='Acura']")));
 
