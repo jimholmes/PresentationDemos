@@ -49,7 +49,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="v3_starting_on_DRY.cs" />
+    <Compile Include="v4_selects_to_separate_method.cs" />
+    <Compile Include="v4_DRY_step_2.cs" />
     <Compile Include="v2_simple_margin_changes.cs" />
     <Compile Include="v1_starting_test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
