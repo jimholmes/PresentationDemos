@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarLoader.cs" />
-    <Compile Include="v9_SRP_load_data_driven.cs" />
+    <Compile Include="v9_SRP_and_abstraction.cs" />
     <Compile Include="PageObjects\Car.cs" />
     <Compile Include="v8_page_objects.cs" />
     <Compile Include="PageObjects\CarMenu.cs" />
