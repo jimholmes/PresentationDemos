@@ -49,6 +49,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjects\Car.cs" />
+    <Compile Include="v8_page_objects.cs" />
+    <Compile Include="PageObjects\CarMenu.cs" />
     <Compile Include="v7_validation_to_separate_method.cs" />
     <Compile Include="v6_move_setup_and_teardown_out.cs" />
     <Compile Include="v5_combining_waits_and_selects.cs" />
