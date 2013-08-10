@@ -43,7 +43,7 @@ namespace CAST2013.PageObjects
             select_menu_item(1, car.Make);
             select_menu_item(2, car.Model);
             select_menu_item(3, car.Color); 
-            extract_message();
+            extract_message(car.Message);
             return this.Message.Text;
         }
 
@@ -65,15 +65,15 @@ namespace CAST2013.PageObjects
                 ExpectedConditions.ElementExists( By.XPath("id('ctl00_SampleContent_DropDownList" + listNum + "')/option[text()='" + text + "']")));
         }
 
-        private void extract_message()
+        private void extract_message(string message)
         {
             WebDriverWait wait = new WebDriverWait(browser, TimeSpan.FromSeconds(10));
 
-            var message = wait.Until(
+            var return_message = wait.Until(
                 ExpectedConditions.ElementExists(
-                    By.XPath("//span[@id='ctl00_SampleContent_Label1' and text()='You have chosen a Sea Green Acura Integra. Nice car!']")));
+                    By.XPath("//span[@id='ctl00_SampleContent_Label1' and text()='" + message +"']")));
 
-            this.Message = message;
+            this.Message = return_message;
         }
     }
 }

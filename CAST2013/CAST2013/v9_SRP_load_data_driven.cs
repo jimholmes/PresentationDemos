@@ -12,7 +12,7 @@ using OpenQA.Selenium.Support.UI;
 namespace CAST2013
 {
     [TestFixture]
-    public class v8_page_objects
+    public class v9_SRP_load_data_driven
     { 
         IWebDriver browser;
         WebDriverWait wait;
@@ -37,14 +37,17 @@ namespace CAST2013
         }
 
         [Test]
-        public void page_objects()
+        public void data_driven_car_choices()
         {
-            Car acura = new Car("Acura", "Integra", "Sea Green", "You have chosen a Sea Green Acura Integra. Nice car!");
-            CarMenu page = new CarMenu(browser);
-            var actual_message = page.select_a_car(acura);
-            Assert.AreEqual(acura.Message, actual_message);
+            CarLoader loader = new CarLoader();
+            IList<Car> cars = loader.load_list();
+            foreach (var car in cars)
+            {
+                CarMenu page = new CarMenu(browser);
+                var message = page.select_a_car(car);
+                Assert.AreEqual(car.Message, message);
+            }
+            
         }
-
-       
     }
 }
