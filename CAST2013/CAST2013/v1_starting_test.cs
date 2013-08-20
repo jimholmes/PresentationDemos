@@ -20,30 +20,30 @@ namespace CAST2013
             var exe = new FirefoxBinary(@"D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
             IWebDriver browser = new FirefoxDriver(exe, profile);
 
-            WebDriverWait wait = new WebDriverWait(browser,TimeSpan.FromSeconds(10));
+            WebDriverWait w = new WebDriverWait(browser,TimeSpan.FromSeconds(10));
 
             browser.Navigate().GoToUrl("http://localhost/AJAXDemos/CascadingDropDown/CascadingDropDown.aspx");
             //browser.Navigate().GoToUrl("http://www.asp.net/ajaxLibrary/AjaxControlToolkitSampleSite/CascadingDropDown/CascadingDropDown.aspx");
 
-            wait.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList1')/option[text()='Acura']")));
+            w.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList1')/option[text()='Acura']")));
 
-            var selectionList =browser.FindElement(By.Id("ctl00_SampleContent_DropDownList1"));
-            var optionsList = new SelectElement(selectionList);
-            optionsList.SelectByText("Acura");
+            var sl =browser.FindElement(By.Id("ctl00_SampleContent_DropDownList1"));
+            var l = new SelectElement(sl);
+            l.SelectByText("Acura");
 
-            wait.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList2')/option[text()='Integra']")));
+            w.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList2')/option[text()='Integra']")));
 
-            selectionList = browser.FindElement(By.Id("ctl00_SampleContent_DropDownList2"));
-            optionsList = new SelectElement(selectionList);
-            optionsList.SelectByText("Integra");
+            sl = browser.FindElement(By.Id("ctl00_SampleContent_DropDownList2"));
+            l = new SelectElement(sl);
+            l.SelectByText("Integra");
 
-            wait.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList3')/option[text()='Sea Green']")));
+            w.Until(ExpectedConditions.ElementExists(By.XPath("id('ctl00_SampleContent_DropDownList3')/option[text()='Sea Green']")));
 
-            selectionList = browser.FindElement(By.Id("ctl00_SampleContent_DropDownList3"));
-            optionsList = new SelectElement(selectionList);
-            optionsList.SelectByText("Sea Green");
+            sl = browser.FindElement(By.Id("ctl00_SampleContent_DropDownList3"));
+            l = new SelectElement(sl);
+            l.SelectByText("Sea Green");
 
-            wait.Until(ExpectedConditions.ElementExists(By.XPath("//span[@id='ctl00_SampleContent_Label1' and text()='You have chosen a Sea Green Acura Integra. Nice car!']")));
+            w.Until(ExpectedConditions.ElementExists(By.XPath("//span[@id='ctl00_SampleContent_Label1' and text()='You have chosen a Sea Green Acura Integra. Nice car!']")));
 
             browser.Quit();
         }
